@@ -384,21 +384,21 @@ Look up your mappings by not giving a right-hand side.
 
 ## Mapleader?
 
-Mapleader는 기본적으로 `\` 설정으로 사용자 정의 매핑에 사용하고 있습니다.
+Mapleader는 `\`를 기본 설정으로 사용자 정의 매핑에 사용하고 있습니다.
 
 ```vim
 nnoremap <leader>h :helpgrep<space>
 ```
 
-이 매핑은 만약 사용자가 `<space>h` 대신에 `\h`로 대신 사용하는 경우 사용합니다.
+이 매핑은 사용자가 `<space>h` 대신에 `\h`를 사용하는 경우에 사용합니다.
 
 ```vim
 let mapleader = ' '
 nnoremap <leader>h :helpgrep<space>
 ```
 
-TODO: need to fix
-또한 <leader>의 local 쪽은 <localleader>가 있습니다. 예를 들어 파일 형식에 맞는 플러그인 등 현지에서 버퍼에 매핑에 사용할 수 있습니다. 이것도 기본적으로 `\`로 할당되어 있습니다.
+또한 <leader>를 지역적으로 범위를 좁혀서 사용하는 경우 <localleader>을 사용할 수 있습니다.
+예를 들어 html, python과 같은 특정 확장자의 파일에서만 사용하고 싶은 경우, 그 파일 형식에 따라 버퍼에 매핑해서 사용할 수 있습니다. 이 또한 기본적으로 `\`로 할당되어 있습니다.
 
 **Note**: 맵 리더는 매핑하기 전에 설정해야 합니다. 이미 이용하고 있는 맵 리더의 매핑 설정은 맵 리더가 변경 되어도 변경되지 않습니다. `:nmap <leader>`를 실행하면 일반 모드로 맵 리더가 이미 해결 된 매핑이 모두 표시되기 때문에, 만약을 위해 자신의 매핑과 일치하는지 확인해야 합니다.
 
