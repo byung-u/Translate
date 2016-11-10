@@ -400,29 +400,22 @@ nnoremap <leader>h :helpgrep<space>
 또한 <leader>를 지역적으로 범위를 좁혀서 사용하는 경우 <localleader>을 사용할 수 있습니다.
 예를 들어 html, python과 같은 특정 확장자의 파일에서만 사용하고 싶은 경우, 그 파일 형식에 따라 버퍼에 매핑해서 사용할 수 있습니다. 이 또한 기본적으로 `\`로 할당되어 있습니다.
 
-**Note**: 맵 리더는 매핑하기 전에 설정해야 합니다. 이미 이용하고 있는 맵 리더의 매핑 설정은 맵 리더가 변경 되어도 변경되지 않습니다. `:nmap <leader>`를 실행하면 일반 모드로 맵 리더가 이미 해결 된 매핑이 모두 표시되기 때문에, 만약을 위해 자신의 매핑과 일치하는지 확인해야 합니다.
+**Note**: <leader>는 전체 키를 매핑하기 전에 설정해야 합니다. 이미 이용하고 있는 맵 리더의 매핑 설정은 맵 리더가 변경 되어도 변경되지 않습니다. `:nmap <leader>`를 실행하면 일반 모드로 맵 리더가 이미 설정 된 매핑이 모두 표시되기 때문에, 만약을 위해 자신의 매핑과 일치하는지 확인해야 합니다.
 
-
-<leader>` will show all normal mode leader mappings with the mapleader resolved
-already, so use it to double-check your mappings.</leader>
-
-See `:h mapleader` and `:h maplocalleader` for more.
-
-자세한 내용은 :h mapleader또는 :h maplocalleader입력하여 표시되는 텍스트를 참조하십시오.
-
+더 자세한 내용은 `:h mapleader`와 `:h maplocalleader`를 참고 해주세요.
 
 ## Registers?
 
-Registers are slots that save text. Copying text into a register is called **yanking** and extracting text from a register is called **pasting**.
+레지스터는 텍스트를 저장하는 곳입니다. 레지스터에 텍스트를 복사하는 것을 **yanking**이라 부르고 레지스터에서 텍스트로 가져오는 것을 **pasting**이라고 합니다.
 
-Vim provides the following registers:
+Vim은 아래의 레지스터를 제공합니다.
 
 Type                | Character              | Filled by? | Readonly? | Contains text from?
 ------------------- | ---------------------- | ---------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Unnamed             | `"`                    | vim        | [ ]       | Last yank or deletion. (`d`, `c`, `s`, `x`, `y`)
-Numbered            | `0` to `9`             | vim        | [ ]       | Register `0`: Last yank. Register `1`: Last deletion. Register `2`: Second last deletion. And so on. Think of registers `1`-`9` as a read-only [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) with 9 elements.
-Small delete        | `-`                    | vim        | [ ]       | Last deletion that was less than one line.
-Named               | `a` to `z`, `A` to `Z` | user       | [ ]       | If you yank to register `a`, you replace its text. If you yank to register `A`, you append to the text in register `a`.
+Unnamed             | `"`                    | vim        | [ ]       | 방금 클립(복사 or 잘라내기)했던 내용이 들어감 (`d`, `c`, `s`, `x`, `y`)
+Numbered            | `0` to `9`             | vim        | [ ]       | 방금 복사한 내용 0,방금 삭제한 내용은 1, 1 이전에 삭제한 내용은 2 ... 9까지 반복, 1~9까지의 레지스터는 읽기 전용 [큐](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))라고 생각하면 됨
+Small delete        | `-`                    | vim        | [ ]       | `x`, `d`로 삭제했던 내용이 들어감 (1줄 미만의 삭제된 내용)
+Named               | `a` to `z`, `A` to `Z` | user       | [ ]       | `a`레지스터에 복사하고 싶은 경우 `"a2yy`를 사용하고 `"ap`를 사용하면 `a`레지스터에 복사했던 내용을 붙여넣기 할 수 있음
 Read-only           | `:`, `.`, `%`          | vim        | [x]       | `:`: Last command, `.`: Last inserted text, `%`: Current filename.
 Alternate buffer    | `#`                    | vim        | [ ]       | Most of the time the previously visited buffer of the current window. See `:h alternate-file`
 Expression          | `=`                    | user       | [ ]       | Evaluation of the VimL expression that was yanked. E.g. do this in insert mode: `<c-r>=5+5<cr>` and "10" will be inserted in the buffer.
