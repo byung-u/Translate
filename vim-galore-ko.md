@@ -544,13 +544,16 @@ Marks can also be used in a [range](#ranges). You probably saw this before and w
 
 Use `:marks` to list all marks. Read everything in `:h mark-motions`.
 
+#<'
+
 ## Completion?
 
-Vim provides many kinds of insert mode completions. If there are multiple matches, a popup menu will let you navigate to the match of your choice.
+Vim은 많은 종류의 삽입 모드 자동완성 기능을 제공합니다. 일치하는 항목이 여러 개인 경우 팝업 메뉴를 사용하여 원하는 항목으로 이동할 수 있습니다.
 
-Typical kinds of completion are tags, functions from imported modules or libraries, file names, dictionary or simply words from the current buffer.
+전형적인 완료 유형은 태그, 가져온 모듈 또는 라이브러리의 함수, 파일 이름, 현재 버퍼의 dictionary, 단어입니다.
 
-Vim provides a mapping for each kind of completion and they all start with `<c-x>` (remember to use them in insert mode):
+Vim은 각 종류의 완성에 대한 매핑을 제공하며 모두 <c-x>`로 시작합니다 (삽입 모드에서 사용해야 함).
+
 
 Mapping      | Kind                                            | Related help
 ------------ | ----------------------------------------------- | ------------
