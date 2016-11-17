@@ -458,16 +458,17 @@ I suggest playing around with all these registers a bit and constantly checking 
 
 ## Ranges?
 
-Ranges are pretty easy to understand, but many Vimmers don't know about their full potential.
+Range는 이해하기 쉽지만 대부분의 vim 사용자들은 이것의 모든 잠재력을 알지 못합니다.
 
-- Many commands take ranges.
-- An address denotes a certain line.
-- A range is either a single address or a pair of addresses separated by either `,` or `;`.
-- Ranges tell commands which lines to act on.
-- Most commands act only on the current line by default.
-- Only `:write` and `:global` act on all lines by default.
+- 많은 명령들이 range를 가집니다.
+- 주소는 특정 라인을 나타냅니다.
+- Range는 단일 주소이거나, `,` 또는 `;`로 구분된 주소 쌍입니다.
+- Range는 어떤 라인을 조작할지 명령어가 알게합니다.
+- 대부분의 명령은 기본적으로 현재 라인에서만 동작합니다.
+- `:write` and `:global`만 기본적으로 모든 줄에서 동작합니다.
 
-The usage of ranges is pretty intuitive, so here are some examples (using `:d` as short form of `:delete`):
+Range의 사용법은 꽤 직관적이고 아래 삭제 명령을 이용한 예시가 있습니다.
+(`:d`는 `:delete`를 줄여서 사용):
 
 Command             | Lines acted on
 ------------------- | -----------------------------------------------------------------------------------------
@@ -476,11 +477,11 @@ Command             | Lines acted on
 `:1d`               | First line.
 `:$d`               | Last line.
 `:1,$d`             | All lines.
-`:%d`               | All lines (syntactic sugar for `1,$`).
-`:.,5d`             | Current line to line 5.
-`:,5d`              | Also current line to line 5.
-`:,+3d`             | Current line and the next 3 lines.
-`:1,+3d`            | First line to current line + 3.
+`:%d`               | All lines (`1,$` 명령을 쉽게).
+`:.,5d`             | 현재 커서가 있는 줄에서 5번 줄까지 삭제.
+`:,5d`              | 현재 커서가 있는 줄에서 5번 줄까지 삭제.
+`:,+3d`             | 현재 커서가 있는 줄에서 다음 3줄 삭제 (총 4줄).
+`:1,+3d`            | 1번 줄부터 현재 커서가 있는 줄 + 3줄 삭제.
 `:,-3d`             | Current line and the last 3 lines. (Vim will prompt you, since this is a reversed range.)
 `:3,'xdelete`       | Lines 3 to the line marked by [mark](#marks) x.
 `:/^foo/,$delete`   | From the next line that starts with "foo" to the end.
