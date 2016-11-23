@@ -551,9 +551,9 @@ Use `:marks` to list all marks. Read everything in `:h mark-motions`.
 
 Vim은 많은 종류의 삽입 모드 자동완성 기능을 제공합니다. 일치하는 항목이 여러 개인 경우 팝업 메뉴를 사용하여 원하는 항목으로 이동할 수 있습니다.
 
-전형적인 완료 유형은 태그, 가져온 모듈 또는 라이브러리의 함수, 파일 이름, 현재 버퍼의 dictionary, 단어입니다.
+전형적인 자동 완성 유형은 태그, 가져온 모듈 또는 라이브러리의 함수, 파일 이름, 현재 버퍼의 dictionary, 단어입니다.
 
-Vim은 각 종류의 완성에 대한 매핑을 제공하며 모두 <c-x>`로 시작합니다 (삽입 모드에서 사용해야 함).
+Vim은 각 자동 완성에 대한 매핑을 제공하며 모두 `<c-x>` <kbd>Ctrl<kbd> + <kbd>x<kbd>로 시작합니다. (반드시 삽입 모드 `i` 에서 사용)
 
 
 Mapping      | Kind                                            | Related help
@@ -571,13 +571,16 @@ Mapping      | Kind                                            | Related help
 `<c-x><c-o>` | omni completion (as specified in `'omnifunc'`)  | `:h i^x^o`
 `<c-x>s`     | spelling suggestions                            | `:h i^Xs`
 
-People might be confused about the difference between user defined completion and omni completion, but technically they do the same thing. They take a function that inspects the current position and return a list of suggestions. User defined completion is defined by the user for their own personal purposes. (Surprise!) It could be anything. Omni completion is meant for filetype-specific purposes, like completing struct members or class methods, and is often set by filetype plugins.
+사용자 정의 자동완성과 omni 자동완성의 차이에 대해 혼란 스러울 지 모르지만 내부적으로는 동일합니다.
+자동완성 기능은 현재 위치를 확인하고 제안할 목록을 반환하는 함수를 호출합니다. 사용자 정의 자동완성은 사용자가 개인적인 목적으로 정의합니다. 놀랍게도 그것은 아무거나 할 수 있습니다. Omni 자동 완성은 구조체 멤버나 클래스 메서드를 자동완성하는 것과 같이 파일 형식 별 목적을위한 것이며 종종 파일 확장자에 따른 플러그인에 의해 설정됩니다.
 
 Vim also allows for completing multiple kinds at once by setting the `'complete'` option. By default that option includes quite a lot, so be sure to trim it to your taste. You can trigger this completion by using either `<c-n>` (next) and `<c-p>` (previous), which also happen to be the keys used for choosing entries in the popup menu. See `:h i^n` and `:h 'complete'` for more on this.
 
-Be sure to check out `:h 'completeopt'` for configuring the behaviour of the popup menu. The default is quite sane, but I prefer adding "noselect" as well.
+또한 Vim은 `'complete'` 옵션을 설정하여 여러 종류를 동시에 자동 완성 할 수 있습니다. 기본적으로 이 옵션은 꽤 많은 것을 포함하고 있으므로 사용자의 취향에 맞게 선택해서 사용해야합니다. `<c-n>`(다음)과`<c-p>`(이전) 중 하나를 사용하여 이 자동완성 기능을 시작할 수 있습니다. 이 키는 또한 팝업 메뉴에서 항목을 선택하는 데 사용됩니다. 도움말은 `: h i^n`과`:h 'complete'` 명령으로 볼 수 있습니다.
 
-Related help:
+팝업 메뉴의 동작을 구성하기 위해`: h 'completeopt'`도 한번 확인해보세요. Default 기능은 꽤 괜찮지만 저는  "noselect" 추가하는 것을 선호합니다.
+
+관련 도움말 :
 
 ```
 :h ins-completion
@@ -587,9 +590,10 @@ Related help:
 
 ## Motions? Operators? Text objects?
 
-**Motions** move the cursor. You all know `h`/`j`/`k`/`l`. Or `w` and `b`. Even `/` is a motion. They also take a count. `2?the<cr>` jumps to the second last occurrence of "the".
+**Motions** 커서 이동을 의미합니다. `h`/`j`/`k`/`l` 혹은 `w`, `b`, 심지어 `/`도 motion입니다. 개수도 셀 수 있어서 `2?the<cr>` 명령을 수행하면 맨 마지막에서 2번째의 `the`에 커서가 위치합니다.
 
-See `:h navigation` and everything below for all available motions.
+이용할 수 있는 모든 motion 정보는 도움말을 참고하시면 됩니다.
+`:h navigation` 
 
 **Operators** act on a region of text, e.g. `d`, `~`, `gU`, `>` to name just a few. They get used in two contexts, either in normal or visual mode. In normal mode, operators come first followed by a motion, e.g. `>j`. In visual mode, operators simply act on the selection, e.g. `Vjd`.
 
