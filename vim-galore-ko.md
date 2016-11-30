@@ -482,12 +482,17 @@ Command             | Lines acted on
 `:,5d`              | 현재 커서가 있는 줄에서 5번 줄까지 삭제.
 `:,+3d`             | 현재 커서가 있는 줄에서 다음 3줄 삭제 (총 4줄).
 `:1,+3d`            | 1번 줄부터 현재 커서가 있는 줄 + 3줄 삭제.
-`:,-3d`             | Current line and the last 3 lines. (Vim will prompt you, since this is a reversed range.)
-`:3,'xdelete`       | Lines 3 to the line marked by [mark](#marks) x.
-`:/^foo/,$delete`   | From the next line that starts with "foo" to the end.
-`:/^foo/+1,$delete` | From the line after the line that starts with "foo" to the end.
+`:,-3d`             | 현재 커서가 있는 줄에서 위로 3줄 삭제. (Vim에서 역방향으로 지울것이라고 알려줌)
+`:3,'xdelete`       | 3번째 줄부터 [mark](#marks)에 의해 마킹된 x까지 삭제.
+`:/^foo/,$delete`   | 현재 커서의 다음에 `foo`로 시작하는 단어가 발견되는 부분부터 문장의 끝까지 삭제.
+`:/^foo/+1,$delete` | 현재 커서의 다음에 `foo`로 시작하는 단어가 2번째 발견되는 부분부터 문장의 끝까지 삭제.
 
 Note that instead of `,`, `;` can be used as a separator. The difference is that in the case of `from,to`, the _to_ is relative to the current line, but when using `from;to`, the _to_ is relative to the address of _from_! Assuming you're on line 5, `:1,+1d` would delete lines 1 to 6, whereas `:1;+1d` would only delete lines 1 and 2.
+
+`,` 대신 `;`를 구분하는 기호로 사용할 수 있습니다. 'from, to'의 경우 현재 커서가 있는 행을 기준으로, 'from; to'의 경우 _from_ 줄부터 to 까지입니다. 
+현재 5번 줄에 커서가 있다고 가정하면
+* `:1,+1d` : 1~6번줄까지 삭제
+* `:1;+1d` : 1,2 삭제
 
 The `/` address can be preceded with another address. This allows you to _stack_ patterns, e.g.:
 
